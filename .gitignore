@@ -1,0 +1,10 @@
+wetransfer_surfruit_2026-10-12_0829/
+web/dist/
+web/.preview/
+web/node_modules/
+web/qa/
+.DS_Store
+.codex/
+.agents/
+.env
+.env.*

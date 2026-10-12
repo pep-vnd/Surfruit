@@ -1,0 +1,51 @@
+import assert from 'node:assert/strict';
+import { readFile, stat } from 'node:fs/promises';
+import path from 'node:path';
+import { root } from './build.mjs';
+const dist = path.join(root,'dist');
+const { base, routes } = JSON.parse(await readFile(path.join(dist,'build.json'),'utf8'));
+let checkedLinks = 0;
+const app = await readFile(path.join(dist,'assets/app.js'),'utf8');
+assert(app.includes("import('./avocado-video.js')"), 'Shared video renderer');
+assert(!app.includes('avocado-3d'), 'No 3D renderer import');
+assert.equal(await stat(path.join(dist,'assets/avocado-3d.js')).catch(() => null), null, 'No 3D renderer in build');
+for (const name of ['app.js','avocado-video.js','video.css','warm.css']) {
+  assert((await stat(path.join(dist,'assets',name))).isFile(), `Missing scene dependency: ${name}`);
+}
+for (const variant of ['desktop','mobile']) {
+  for (let index=0;index<96;index++) {
+    const frame=`assets/avocado-sequence/${variant}/frame-${String(index).padStart(3,'0')}.webp`;
+    assert((await stat(path.join(dist,frame))).size>0,`Missing video frame: ${frame}`);
+  }
+}
+for (const [lang, pages] of Object.entries(routes)) {
+  for (const [page, route] of Object.entries(pages)) {
+    const file = path.join(dist,route,'index.html');
+    const html = await readFile(file,'utf8');
+    assert(html.includes(`<html lang="${lang}">`), `${route}: language`);
+    if (page !== 'home') {
+      assert(html.includes(' uses-video'), `${route}: shared video scene`);
+      assert(html.includes('assets/video.css'), `${route}: video styles`);
+      assert(/class="scene-poster"[^>]*src="[^"]+desktop\/frame-000.webp"/.test(html), `${route}: initial frame in HTML`);
+      assert(html.includes('mobile/frame-000.webp'), `${route}: mobile initial frame`);
+      assert(html.includes('fetchpriority="high"'), `${route}: eager initial image`);
+    }
+    assert.equal((html.match(/<h1[ >]/g)||[]).length,1,`${route}: one h1`);
+    const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]);
+    assert.equal(new Set(ids).size,ids.length,`${route}: unique IDs`);
+    for (const match of html.matchAll(/(?:href|src|data-src)="([^"]+)"/g)) {
+      const url=match[1];
+      if (/^(mailto:|https?:)/.test(url)) continue;
+      if (url.startsWith('#')) { assert(ids.includes(url.slice(1)),`${route}: anchor ${url}`); continue; }
+      assert(url.startsWith(base),`${route}: wrong base ${url}`);
+      const [pathname, hash]=url.slice(base.length).split('#');
+      const target=path.join(dist,pathname,pathname.endsWith('/')?'index.html':'');
+      assert((await stat(target)).isFile(),`${route}: missing ${url}`);
+      if (hash) assert((await readFile(target,'utf8')).includes(`id="${hash}"`),`${route}: missing target anchor ${url}`);
+      checkedLinks++;
+    }
+    for (const match of html.matchAll(/<img\b[^>]*>/g)) assert(/\balt="/.test(match[0]),`${route}: image alt`);
+    assert(!/lorem ipsum|mercadona|GLOBALG.A.P/i.test(html),`${route}: unsupported copy`);
+  }
+}
+console.log(`OK · ${Object.values(routes).reduce((sum, pages) => sum + Object.keys(pages).length, 0)} rutas, idiomas, IDs, anclas, imágenes y ${checkedLinks} recursos/enlaces · BASE=${base}`);

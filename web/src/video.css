@@ -1,0 +1,54 @@
+/* Shared photographic sequence on every product demo. */
+.uses-video .product-stage {
+  background:radial-gradient(ellipse at 68% 48%,#203b28 0,#11291e 62%,#11291e 100%);
+}
+.uses-video .stage-grid,.uses-video .orbit {display:none;}
+.uses-video .avocado-scene {width:min(72vw,1120px)!important;}
+.uses-video .avocado-scene canvas,.uses-video .scene-poster {
+  position:absolute;
+  width:100%;height:auto;
+  top:50%;left:0;
+  transform:translateY(-50%);
+  mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent),linear-gradient(to bottom,transparent,#000 9%,#000 91%,transparent);
+  mask-composite:intersect;
+}
+.uses-video .scene-poster {
+  bottom:auto;right:auto;filter:none;
+}
+.uses-video.static-scene .avocado-scene {transform:translate(-50%,-50%)!important;}
+.uses-video .fruit-label {display:none;}
+.uses-video .annotation-flesh {left:45%;top:14%;bottom:auto;}
+.uses-video .annotation-seed {right:12%;top:14%;}
+@media(max-width:800px) {
+  .uses-video .avocado-scene {width:100vw!important;}
+}
+@media(max-width:540px) {
+  .uses-video .hero-intro {top:112px;padding-right:0;}
+  .uses-video .hero-intro h1 {font-size:clamp(80px,23vw,116px);}
+  .uses-video .hero-intro .eyebrow {margin-bottom:18px;}
+  .uses-video .hero-line {margin-top:20px;max-width:260px;}
+  .uses-video .hero-trade {margin-top:12px;}
+  .uses-video .avocado-scene {width:116vw!important;height:390px!important;top:67%!important;left:50%!important;}
+  .uses-video.static-scene .avocado-scene {left:50%!important;width:116vw!important;}
+  .uses-video .annotation-flesh {left:var(--pad);top:auto;bottom:12%;}
+  .uses-video .annotation-seed {right:var(--pad);top:auto;bottom:12%;}
+}
+
+/* Keep the warm typography and cream sections around the photographic stage. */
+.page-warm.uses-video .product-story {background:#11291e;}
+.page-warm.uses-video .product-stage {color:#f1f0e6;}
+.page-warm.uses-video .hero-bottom,
+.page-warm.uses-video .anatomy-copy>p:last-child,
+.page-warm.uses-video .annotation {color:#dce4d5;}
+.page-warm.uses-video .hero-trade span,
+.page-warm.uses-video .anatomy-copy>.eyebrow,
+.page-warm.uses-video .annotation span {color:#c2e66c;}
+.page-warm.uses-video .hero-bottom {border-color:#f1f0e633;}
+.page-warm.uses-video .scroll-cue>span {border-color:#f1f0e655;}
+.page-warm.uses-video .annotation i {background:#c2e66c66;}
+.page-warm.uses-video .hero-intro .small-dot {background:#c2e66c;}
+@media(max-width:540px) {
+  .page-warm.uses-video .hero-line {max-width:310px;}
+  .page-warm.uses-video .annotation {top:auto;bottom:12%;font-size:9px;}
+  body.page-product.uses-video:not(.js) .avocado-scene {left:50%;width:116vw!important;}
+}
