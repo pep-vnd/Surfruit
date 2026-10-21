@@ -63,3 +63,7 @@ Originales del archivo facilitado por el cliente. Conversión a WebP responsive,
 | `carrot-box-*.webp` | `Carrots/Producto_Lomas--7.jpg` | 2304 × 1536 |
 
 Las fotos de cajas, mallas y manojos son referencias visuales; no se deducen de sus etiquetas condiciones comerciales actuales. No se han encontrado fotos de envases identificables de chirivía, coles o boniato en el archivo revisado, por lo que no se han inventado.
+
+## Portada de cítricos sin logo superpuesto
+
+`citrus-hero-clean-700.webp` y `citrus-hero-clean-1400.webp` proceden de `15.05.08 Producto Las Lomas/Producto_Lomas-9975.jpg` (2304 × 1536), la misma toma original sin logo. Sustituyen en la portada a la copia marcada de la carpeta Grapefruit. Solo se redimensiona y convierte a WebP; no se reconstruye ni retoca el contenido. El nombre nuevo evita reutilizar la imagen anterior en caché.
