@@ -1,10 +1,12 @@
 # SURFRUIT
 
-Demo web bilingüe con dos propuestas: **Esencia** y **A la mesa**. Apertura del aguacate mediante una secuencia de vídeo vinculada al scroll, fotografías del campo y presentaciones, y recetas.
+Demo web bilingüe con catálogo de aguacate, cítricos, verduras y boniato. Conserva la propuesta **Esencia** para aguacate y adapta **A la mesa** a cítricos. Apertura del aguacate mediante una secuencia de vídeo vinculada al scroll, fotografías del campo y presentaciones, y recetas.
 
 - [Ver la web](https://pep-vnd.github.io/Surfruit/)
-- [Demo Esencia](https://pep-vnd.github.io/Surfruit/es/aguacate/)
-- [Demo A la mesa](https://pep-vnd.github.io/Surfruit/es/a-la-mesa/)
+- [Aguacate](https://pep-vnd.github.io/Surfruit/es/aguacate/)
+- [Cítricos](https://pep-vnd.github.io/Surfruit/es/citricos/)
+- [Verduras](https://pep-vnd.github.io/Surfruit/es/verduras/)
+- [Surfruit](https://pep-vnd.github.io/Surfruit/es/surfruit/)
 
 ## Desarrollo
 
@@ -22,3 +24,5 @@ GitHub Actions compila, comprueba y publica `web/dist` en GitHub Pages al subir 
 La demo mantiene `noindex` y no tiene backend: las consultas se preparan localmente, sin envío a un servidor.
 
 [Documentación y recursos](web/README.md).
+
+[Fuentes, decisiones y datos pendientes de validación](web/docs/catalogue-review.md).

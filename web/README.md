@@ -1,6 +1,6 @@
 # SURFRUIT · Demo de escaparate B2B
 
-Demo estática en español e inglés. La página de aguacate es la pieza principal y se puede abrir directamente desde un QR; la home es una propuesta complementaria. No hay backend, cuentas, precios, carrito ni integraciones externas.
+Demo estática en español e inglés, con inicio, empresa, cuatro categorías de producto, fichas comerciales y contacto. La página de aguacate conserva la experiencia de vídeo vinculada al scroll y se puede abrir directamente desde un QR. No hay backend, cuentas, precios ni carrito.
 
 ## Ejecutar
 
@@ -12,9 +12,9 @@ npm ci
 npm run dev
 ```
 
-- Demo 02, A la mesa: http://127.0.0.1:4173/es/a-la-mesa/
-- Demo 02, At the table: http://127.0.0.1:4173/en/at-the-table/
-- Demo 01, Esencia: http://127.0.0.1:4173/es/aguacate/
+- Cítricos: http://127.0.0.1:4173/es/citricos/
+- Citrus: http://127.0.0.1:4173/en/citrus/
+- Aguacate, Esencia: http://127.0.0.1:4173/es/aguacate/
 - Avocado: http://127.0.0.1:4173/en/avocado/
 - Home: http://127.0.0.1:4173/es/
 - English home: http://127.0.0.1:4173/en/
@@ -46,15 +46,23 @@ Para recuperar la configuración local inicial tras probar otra base:
 npm run build
 ```
 
-Reiniciar la vista previa si se ha cambiado `BASE`. No se ha publicado ni creado ningún recurso externo. La demo tiene `noindex,nofollow` y un `robots.txt` que desaconseja indexarla. Revisarlos al aprobar la publicación definitiva; no sustituyen a un control de acceso.
+Reiniciar la vista previa si se ha cambiado `BASE`. La demo está publicada en [GitHub Pages](https://pep-vnd.github.io/Surfruit/); el workflow del repositorio la actualiza al subir cambios a `main`. Tiene `noindex,nofollow` y un `robots.txt` que desaconseja indexarla. Revisarlos al aprobar la publicación comercial definitiva; no sustituyen a un control de acceso.
 
 La página de producto usa únicamente los recursos comunes de `assets/`. Para trasladarla a un subdominio, construir con `BASE=/`, servir el mismo paquete y dirigir el QR a `/es/aguacate/` o `/en/avocado/`. Si se desea el producto en la raíz del subdominio, cambiar el documento raíz en `scripts/build.mjs` y las entradas de `routes` de forma coordinada.
 
-## Propuestas y prueba de vídeo
+## Versión actual: catálogo completo
 
-**01 · Esencia** conserva la dirección oscura y tipográfica, con apertura fotográfica ligada al scroll y recetas al final. **02 · A la mesa** añade una portada gastronómica, colores cálidos, tipografía serif y textos sensoriales más cercanos. Ambas comparten la escena corregida, las fotos reales y las herramientas comerciales. El selector está fijo en escritorio y en el menú y pie de página en móvil.
+El aguacate conserva la primera propuesta. Cítricos utiliza la estética de la segunda. Se incorporan Surfruit, Verduras, Otros (boniato), Contacta y fichas individuales. Los enlaces antiguos de la segunda demo redirigen a cítricos.
 
-Ambas propuestas utilizan el segundo vídeo aportado por el usuario. Una secuencia fotográfica de 96 imágenes avanza y retrocede con el scroll, con recursos más ligeros en móvil y una alternativa estática para movimiento reducido. Las dos propuestas utilizan esta secuencia; ninguna carga Three.js. El primer fotograma está en el HTML y aparece sin necesidad de scroll. [Fuente, generación y límites](docs/video-proof.md).
+El formulario de Contacta abre la aplicación de correo con una consulta revisable y permite copiarla. No transmite datos a un backend.
+
+[Fuentes, mantenimiento y pendientes](docs/catalogue-review.md).
+
+## Antecedentes de diseño
+
+Originalmente se presentaron dos propuestas de aguacate: **01 · Esencia**, oscura y tipográfica, y **02 · A la mesa**, con colores cálidos y tipografía serif. El cliente eligió la primera para aguacate y la segunda para cítricos. El selector de demos se ha retirado.
+
+El aguacate utiliza el segundo vídeo aportado por el usuario. Una secuencia fotográfica de 96 imágenes avanza y retrocede con el scroll, con recursos más ligeros en móvil y una alternativa estática para movimiento reducido. Solo la página de aguacate carga esta secuencia; ninguna página carga Three.js. El primer fotograma está en el HTML y aparece sin necesidad de scroll. [Fuente, generación y límites](docs/video-proof.md).
 
 ## Editar y ampliar
 
@@ -71,7 +79,7 @@ Ambas propuestas utilizan el segundo vídeo aportado por el usuario. Una secuenc
 - `scripts/build.mjs`: generador estático; excluye el motor 3D y sus mapas del paquete.
 - `scripts/check.mjs`: validación de rutas, enlaces internos, anclas, idiomas e imágenes.
 
-El catálogo solo contiene aguacate. Para añadir un producto, ampliar rutas, contenido y renderizado, reutilizando cabecera, presentación y contacto; no hay páginas de producto vacías.
+El catálogo editable está en `src/catalog.mjs`. Para añadir un producto, completar los textos y datos documentados en ambos idiomas, añadir su ruta y sus fotografías. Las categorías y fichas reutilizan cabecera, presentación y contacto.
 
 ## Recursos, pendientes y verificación
 

@@ -99,7 +99,7 @@ document.addEventListener('keydown', event => {
 document.addEventListener('click', event => {
   if (!menu.hidden && !menu.contains(event.target) && !menuToggle.contains(event.target)) closeMenu();
 });
-window.matchMedia('(min-width: 801px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
+window.matchMedia('(min-width: 1001px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
 
 // Section shortcuts move immediately; the commercial presentation never has
 // to replay the opening. The exploratory scroll itself stays entirely native.
@@ -128,6 +128,7 @@ document.querySelectorAll('.language-link').forEach(link => {
       if (section === 'product') section = ready && !reduced && story.getBoundingClientRect().top < -200 ? 'inside' : '';
     } else if (document.querySelector('#contact')?.getBoundingClientRect().top < innerHeight * .5) section = 'contact';
     const destination = new URL(link.href);
+    if (data.page === 'contact') destination.search = location.search;
     destination.hash = section;
     link.href = destination.href;
   });
@@ -200,3 +201,46 @@ document.querySelector('[data-copy-link]')?.addEventListener('click', async () =
   try { await navigator.clipboard.writeText(new URL(data.productUrl, location.origin).href); status.textContent = t.copied; }
   catch { status.textContent = t.copyFallback; }
 });
+
+// One-shot entrance motion extends the approved scroll story to editorial pages.
+// Content is visible by default and remains visible with reduced motion or no JS.
+const reveals = [...document.querySelectorAll('[data-reveal], .section-heading, .selection-heading, .recipe-heading, .home-product>div, .home-origin>div')];
+reveals.forEach(el => el.setAttribute('data-reveal',''));
+if ('IntersectionObserver' in window && !reducedMedia.matches) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold:0.08, rootMargin:'0px 0px -24px 0px' });
+  body.classList.add('reveal-enabled');
+  reveals.forEach(el => observer.observe(el));
+  reducedMedia.addEventListener('change', event => {
+    if (event.matches) { body.classList.remove('reveal-enabled'); observer.disconnect(); }
+  });
+}
+
+const commercialForm = document.querySelector('#commercial-form');
+if (commercialForm) {
+  const labels = data.contactCopy;
+  const status = document.querySelector('#contact-status');
+  const requested = new URLSearchParams(location.search).get('product');
+  if ([...commercialForm.elements.product.options].some(option => option.value === requested)) commercialForm.elements.product.value = requested;
+  function commercialSummary() {
+    const values = new FormData(commercialForm);
+    const selected = commercialForm.elements.product.selectedOptions[0].textContent;
+    return `${labels.name}: ${values.get('name').trim()}\n${labels.company}: ${values.get('company').trim()}\nEmail: ${values.get('email').trim()}\n${labels.interest}: ${selected}\n\n${labels.message}:\n${values.get('message').trim()}`;
+  }
+  commercialForm.addEventListener('submit', event => {
+    event.preventDefault();
+    if (!commercialForm.reportValidity()) return;
+    const product = commercialForm.elements.product.selectedOptions[0].textContent;
+    const subject = `${data.lang==='es'?'Consulta comercial':'Commercial enquiry'} · ${product} · SURFRUIT`;
+    location.href = `mailto:${commercialForm.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(commercialSummary())}`;
+    status.textContent = labels.status;
+  });
+  document.querySelector('[data-copy-contact]').addEventListener('click', async () => {
+    if (!commercialForm.reportValidity()) return;
+    try { await navigator.clipboard.writeText(commercialSummary());status.textContent=labels.copied; }
+    catch { status.textContent=labels.copyError; }
+  });
+}

@@ -17,17 +17,24 @@ export async function build(base = normalizeBase(process.env.BASE || '/')) {
   await cp(path.join(root, 'assets'), path.join(dist, 'assets'), { recursive: true, filter: source => !/\.(ttf|otf)$|avocado-(skin|stone|pulp)-(texture|natural)\.webp$/.test(source) });
   await cp(path.join(root, 'src/style.css'), path.join(dist, 'assets/style.css'));
   await cp(path.join(root, 'src/app.js'), path.join(dist, 'assets/app.js'));
-  for (const name of ['avocado-video.js', 'warm.css', 'video.css']) await cp(path.join(root, 'src', name), path.join(dist, 'assets', name));
+  for (const name of ['avocado-video.js', 'warm.css', 'video.css', 'catalogue.css']) await cp(path.join(root, 'src', name), path.join(dist, 'assets', name));
   await mkdir(path.join(dist, 'licenses'), { recursive: true });
   for (const name of ['font-adwaita-LICENSE.txt','font-nimbus-LICENSE.txt','font-nimbus-COPYING.txt']) {
     await cp(path.join(root, 'docs', name), path.join(dist, 'licenses', name));
   }
   for (const lang of ['es', 'en']) {
-    for (const page of ['home', 'product', 'warm']) {
+    for (const page of Object.keys(routes[lang])) {
       const dir = path.join(dist, routes[lang][page]);
       await mkdir(dir, { recursive: true });
       await writeFile(path.join(dir, 'index.html'), render(lang, page, base));
     }
+  }
+  // Keep the former second-demo bookmarks working after assigning it to citrus.
+  for (const [lang, oldRoute] of [['es','es/a-la-mesa/'],['en','en/at-the-table/']]) {
+    const target = `${base}${routes[lang].citrus}`;
+    const dir = path.join(dist,oldRoute);
+    await mkdir(dir,{recursive:true});
+    await writeFile(path.join(dir,'index.html'), `<!doctype html><html lang="${lang}"><head><meta charset="UTF-8"><meta http-equiv="refresh" content="0;url=${target}"><title>SURFRUIT</title></head><body><a href="${target}">${lang==='es'?'Cítricos':'Citrus'}</a></body></html>`);
   }
   await writeFile(path.join(dist, 'index.html'), render('es', 'home', base));
   await writeFile(path.join(dist, '404.html'), render('es', '404', base));

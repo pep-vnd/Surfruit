@@ -1,4 +1,20 @@
-# Verificación · vídeo compartido
+# Verificación · catálogo completo
+
+## Ampliación del 21 de octubre de 2026
+
+- 32 rutas ES/EN, menú de siete secciones, seis fichas nuevas y redirección de la antigua demo cálida a cítricos. «Otros» contiene únicamente boniato, según confirmación del usuario.
+- Build y comprobaciones correctos con base `/` y `/Surfruit/`: 1282 referencias locales, idiomas, anclas, IDs, imágenes y variantes responsive. Se comprueban también las consultas preseleccionadas, los calendarios y la ausencia del vídeo en las demás páginas.
+- Vista de escritorio de 1440 × 900: inicio, empresa, cítricos, verduras, ficha de pomelo, calendario y contacto. Fotografías cargadas, navegación y enlaces a fichas operativos, sin errores o avisos observados en consola.
+- Móvil de 390 × 844: cítricos, menú de siete entradas y aguacate. Entrada directa en aguacate con `scrollY=0`, fotograma 0 visible y avance al 95 mediante el acceso a la escena abierta.
+- Móvil de 320 × 740: ficha de pomelo en inglés, boniato y formulario con producto preseleccionado. Sin desbordamiento horizontal en las vistas medidas.
+- Consulta preparada con datos ficticios: validación, casilla de privacidad y copia al portapapeles correctas. El cambio de idioma conserva el producto. No se ha enviado ningún mensaje externo.
+- Apariciones de texto verificadas al navegar y desplazarse. Revisión de código de las alternativas sin JavaScript y con movimiento reducido: contenido visible, formulario oculto sin JavaScript y correo directo disponible.
+- Se mantiene intacto el renderer de vídeo y la secuencia aprobada del aguacate. Se conservan las recetas y presentaciones de la primera plantilla.
+- La publicación de la demo ampliada en GitHub Pages está autorizada por el usuario. Los datos de campaña, marcas, certificados y textos legales pendientes están documentados en `catalogue-review.md`.
+
+Las siguientes secciones son históricas: sus referencias a tres demos, controles retirados, contactos pendientes o ausencia de publicación no describen la versión actual.
+
+## Archivo · vídeo compartido
 
 Revisión local del 12 de octubre de 2026, navegador integrado de Codex (Chromium). Las comprobaciones están ordenadas de más recientes a anteriores; la revisión inicial está archivada en `verification-v1.md` y sus observaciones sobre capas fotográficas ya no describen la animación actual.
 

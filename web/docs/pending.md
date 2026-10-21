@@ -1,5 +1,7 @@
 # Datos comerciales pendientes
 
+Actualización de octubre 2026: los contactos y las referencias del catálogo se han recuperado de las webs corporativas. La lista vigente de validaciones y sus fuentes está en [catalogue-review.md](catalogue-review.md). La tabla siguiente documenta los pendientes de la demo inicial.
+
 La fuente única para estos datos es `src/config.mjs`. No completar a partir de suposiciones o etiquetas antiguas.
 
 | Dato | Estado / decisión para la demo |
