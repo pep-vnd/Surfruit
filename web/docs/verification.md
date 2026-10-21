@@ -1,5 +1,15 @@
 # Verificación · catálogo completo
 
+## Revisión de inicio, fotografías y catálogo · 21 de octubre de 2026
+
+- Inicio: el botón principal enlaza al catálogo y se conservan las cuatro fotos aprobadas. Eliminada la introducción duplicada de aguacate. Verificado el titular de origen antes y después de bajar y volver: opacidad final 1, transformación `none`, sin distorsión observada.
+- Nueva panorámica de Surfruit revisada en 1440 × 900 y 320 × 740: versiones responsive hasta 2600 px, proporción 16:9 en escritorio y 4:3 en móvil. Se sustituye la foto aérea anterior en esta sección.
+- Cítricos: foto final reemplazada por un primer plano de pomelos de piel dorada y pulpa rosada. Fotografías reales de caja y malla, revisadas en escritorio y móvil.
+- Catálogo de Verduras: puerro, zanahoria, chirivía y coles. Fichas y nombres en español e inglés; consulta de chirivía en inglés con el producto preseleccionado. Los enlaces antiguos de coliflor y brócoli redirigen a la categoría, sin atribuirlos a otro producto.
+- Presentaciones de puerro y zanahoria en categoría y ficha; galería individual de puerro revisada a 320 px. Sin imágenes rotas ni desbordamiento en las vistas medidas. Consola de la revisión sin errores ni avisos.
+- Build y comprobaciones correctos con `/Surfruit/` y `/`: 32 rutas, 1306 referencias y seis redirecciones. Las comprobaciones de sustitución se limitan al catálogo y las consultas; la coliflor de una receta de aguacate se conserva como ingrediente.
+- La animación de vídeo y los envases del aguacate no se modifican en esta revisión.
+
 ## Ampliación del 21 de octubre de 2026
 
 - 32 rutas ES/EN, menú de siete secciones, seis fichas nuevas y redirección de la antigua demo cálida a cítricos. «Otros» contiene únicamente boniato, según confirmación del usuario.

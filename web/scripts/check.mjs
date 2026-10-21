@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { catalog, navPages } from '../src/catalog.mjs';
+import { legacyRoutes } from '../src/config.mjs';
 import { root } from './build.mjs';
 const dist = path.join(root,'dist');
 const { base, routes } = JSON.parse(await readFile(path.join(dist,'build.json'),'utf8'));
@@ -41,6 +42,14 @@ for (const [lang, pages] of Object.entries(routes)) {
       assert.equal(monthCount, catalog[page].months ? 12 : 0, `${route}: honest seasonal calendar`);
     }
     assert.equal((html.match(/<h1[ >]/g)||[]).length,1,`${route}: one h1`);
+    if (page === 'vegetables' || page === 'contact') {
+      assert(!/coliflor|brócoli|cauliflower|broccoli/i.test(html), `${route}: retired vegetables absent from catalogue and enquiries`);
+      assert(html.includes(lang==='es'?'Chirivía':'Parsnip') && html.includes(lang==='es'?'Coles':'Cabbage'), `${route}: replacement vegetables available`);
+    }
+    if (page === 'home') {
+      assert(!html.includes('class="home-product"'), `${route}: no duplicate avocado introduction`);
+      assert.equal((html.match(/class="category-card"/g)||[]).length,4,`${route}: four category photos preserved`);
+    }
     const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]);
     assert.equal(new Set(ids).size,ids.length,`${route}: unique IDs`);
     for (const match of html.matchAll(/(?:href|src|data-src)="([^"]+)"/g)) {
@@ -68,7 +77,7 @@ for (const [lang, pages] of Object.entries(routes)) {
 }
 console.log(`OK · ${Object.values(routes).reduce((sum, pages) => sum + Object.keys(pages).length, 0)} rutas, idiomas, IDs, anclas, imágenes y ${checkedLinks} recursos/enlaces · BASE=${base}`);
 
-for (const [lang,old] of [['es','es/a-la-mesa/'],['en','en/at-the-table/']]) {
+for (const [lang,old,target] of legacyRoutes) {
   const redirect = await readFile(path.join(dist,old,'index.html'),'utf8');
-  assert(redirect.includes(`url=${base}${routes[lang].citrus}`),'Former warm demo redirects to citrus');
+  assert(redirect.includes(`url=${base}${routes[lang][target]}`),`${old}: redirects to current category`);
 }

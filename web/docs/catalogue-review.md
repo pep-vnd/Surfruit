@@ -8,7 +8,17 @@
 - «Otros» contiene solo boniato, confirmado por el usuario. No se anuncia pistacho.
 - El usuario ha autorizado actualizar la demo pública de GitHub Pages; no equivale a aprobar la web comercial definitiva.
 
-## Fuentes corporativas consultadas
+
+## Revisión solicitada tras ver la demo
+
+- Inicio: acceso directo a las cuatro categorías; se retira el bloque «Empecemos por el aguacate» y se mantienen las cuatro fotos aprobadas. El botón principal conduce a esa selección.
+- «El origen importa»: aparición por opacidad, sin traslación de la tipografía, y espaciado menos comprimido. Las demás apariciones también liberan la transformación al terminar.
+- Nueva panorámica de Surfruit y foto final de cítricos, ambas tomadas del archivo original.
+- El usuario sustituye coliflor y brócoli por chirivía y coles. Se actualizan fichas, enlaces, traducciones y formulario. Los enlaces retirados llevan a Verduras. No se trasladan las variedades ni campañas de los productos anteriores a los nuevos.
+- No se ha encontrado información comercial contrastable de chirivías y coles en las páginas corporativas consultadas. Sus variedades, cultivo y calendario se consultan al equipo; la identificación de producto y las fotos proceden del archivo y del encargo.
+- Presentaciones fotografiadas: cajas y mallas de pomelo, manojos de puerro y zanahorias con hoja en caja. Se muestran en la categoría y en sus fichas. El aguacate conserva sus envases.
+
+## Fuentes corporativas consultadas (revisión inicial)
 
 | Contenido | Fuente | Decisión |
 |---|---|---|
@@ -42,5 +52,6 @@ No existe backend ni proveedor nuevo. Nombre, empresa, email, producto y mensaje
 - `src/catalog.mjs`: productos, textos ES/EN, variedades, opciones de envasado y calendario.
 - `src/config.mjs`: rutas y contacto corporativo.
 - `src/sections.mjs`: plantillas de categoría, fichas, empresa, contacto y páginas legales.
+- `src/packaging.mjs`: presentaciones fotografiadas y sus textos ES/EN.
 - `src/catalogue.css`: estilos adicionales; el diseño de aguacate sigue en `style.css` y `video.css`.
 - `src/app.js`: aparición progresiva de textos y preparación local de consultas. Respeta movimiento reducido; el contenido permanece legible sin JavaScript.

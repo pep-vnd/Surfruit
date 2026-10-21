@@ -46,3 +46,20 @@ Tres imágenes adicionales se recuperaron de la web oficial y se guardaron como 
 | `broccoli-*.webp` | https://laslomas.eu/surfruit/wp-content/themes/rt_zenith/custom/images/Broccoli.jpg |
 
 Variantes nominales de 700 y 1400 px; las fuentes menores no se amplían. Orientación EXIF, reducción y compresión WebP, sin generación ni retoque de contenido. Las fotografías de personas muestran labores reales; no se les atribuyen nombres o cargos no documentados.
+
+## Revisión de fotografía y presentaciones · 21 de octubre de 2026
+
+Originales del archivo facilitado por el cliente. Conversión a WebP responsive, sin aumentar la resolución ni modificar colores. La panorámica de Surfruit se sirve hasta 2600 px y conserva una composición amplia sin el recorte excesivo de la anterior.
+
+| Recurso | Original | Resolución de origen |
+|---|---|---|
+| `estate-panorama-*.webp` | `NEW JULIO PHOTOS - RAFA APPROVED/julio2023/LAS_LOMAS_JGF5368.jpg` | 2834 × 1890 |
+| `citrus-fresh-*.webp` | `Grapefruit/LAS_LOMAS-3619.jpg` | 8858 × 5906 |
+| `parsnip-*.webp` | `Parsnips/Producto_Lomas-0117.jpg` | 2304 × 1536 |
+| `cabbage-*.webp` | `15.05.08 Producto Las Lomas/Producto_Lomas-0130.jpg` | 2304 × 1536 |
+| `grapefruit-net-*.webp` | `Grapefruit/Producto_Lomas-9990.jpg` | 2304 × 1536 |
+| `grapefruit-box-*.webp` | `Grapefruit/IMG-20200305-WA0003.jpg` | 1200 × 1600 |
+| `leek-box-*.webp` | `Leeks/Producto_Lomas--2.jpg` | 2304 × 1536 |
+| `carrot-box-*.webp` | `Carrots/Producto_Lomas--7.jpg` | 2304 × 1536 |
+
+Las fotos de cajas, mallas y manojos son referencias visuales; no se deducen de sus etiquetas condiciones comerciales actuales. No se han encontrado fotos de envases identificables de chirivía, coles o boniato en el archivo revisado, por lo que no se han inventado.

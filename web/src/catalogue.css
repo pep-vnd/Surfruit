@@ -130,7 +130,9 @@
 .company-hero>div {padding:0 var(--pad) 65px;}
 .company-hero h1 {font-size:clamp(68px,8vw,124px);margin:30px 0;text-transform:uppercase;}
 .company-hero>div>p:last-child {font-size:18px;max-width:570px;}
-.company-hero>img {width:100%;height:520px;object-fit:cover;}
+.company-hero>figure {margin:0 var(--pad);}
+.company-hero>figure img {width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:center 56%;}
+.company-hero figcaption {margin-top:16px;font-size:12px;color:#596c5c;}
 .company-origin h2 {font-size:clamp(46px,5.1vw,78px);}
 .journey-section {padding:100px var(--pad);background:#122b20;color:#f1f0e6;}
 .journey-section .editorial-heading {grid-template-columns:1fr 2fr;}
@@ -183,7 +185,10 @@
 .legal-page p {max-width:760px;}
 /* Reveal content only after the observer has been installed; no-JS stays readable. */
 .reveal-enabled [data-reveal] {opacity:0;transform:translateY(28px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.65,.3,1);}
-.reveal-enabled [data-reveal].is-visible {opacity:1;transform:translateY(0);}
+.reveal-enabled [data-reveal].is-visible {opacity:1;transform:none;}
+/* Fade this large headline without rasterising its glyphs on a moving layer. */
+.reveal-enabled .home-origin>[data-reveal] {transform:none;transition:opacity .7s ease;}
+.home-origin h2 {letter-spacing:-.025em;line-height:1.02;}
 .reduced-motion [data-reveal] {opacity:1;transform:none;transition:none;}
 @media(prefers-reduced-motion:reduce) {
  .reveal-enabled [data-reveal] {opacity:1;transform:none;transition:none;}
@@ -246,7 +251,7 @@
  .product-specs {padding:65px var(--pad);gap:35px;}
  .spec-list>div {display:block;}
  .spec-list dd {margin-top:12px;}
- .company-hero>img {height:340px;}
+ .company-hero>figure img {aspect-ratio:16/10;}
  .company-hero h1 {font-size:9vw;}
  .team-photos img {height:300px;}
  .environment-section {gap:35px;}
@@ -314,7 +319,7 @@
  .related-title {font-size:46px;}
  .company-hero {padding-top:calc(var(--header) + 45px);}
  .company-hero h1 {font-size:clamp(56px,14vw,80px);}
- .company-hero>img {height:280px;}
+ .company-hero>figure img {aspect-ratio:4/3;}
  .company-hero>div>p:last-child {font-size:16px;}
  .journey-list li {grid-template-columns:30px 1fr;gap:16px;}
  .journey-list p {grid-column:2;}
@@ -345,4 +350,38 @@ body:not(.js) #commercial-form {display:none;}
 body:not(.js) .menu-toggle {display:none;}
 @media(max-width:1000px) {
  body:not(.js) .mobile-nav[hidden] {display:block!important;position:relative;inset:auto;max-height:none;margin-top:var(--header);box-shadow:none;}
+}
+
+/* Actual commercial presentations from the photographic archive. */
+.packing-gallery {padding:100px var(--pad);background:#e6e8dc;color:#193c2a;}
+.page-warm .packing-gallery {background:#eee4cf;}
+.packing-heading {display:grid;grid-template-columns:.65fr 1.4fr 1fr;gap:6%;align-items:start;margin-bottom:60px;}
+.packing-heading h2 {font-size:clamp(44px,5.3vw,80px);}
+.packing-heading>p:last-child {font-size:15px;line-height:1.8;}
+.packing-gallery-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:45px;}
+.packing-card figure {background:#dce2ce;overflow:hidden;}
+.packing-card figure img {width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;}
+.packing-card>div {padding-top:24px;}
+.packing-card h3 {font-size:32px;margin:14px 0 18px;}
+.packing-card>div>p:not(.eyebrow) {font-size:15px;line-height:1.8;max-width:480px;}
+.packing-card .text-link {margin-top:24px;}
+.packing-note {margin-top:40px;max-width:700px;}
+.packing-single {display:block;}
+.packing-single .packing-card {display:grid;grid-template-columns:1.1fr 1fr;gap:8%;align-items:center;}
+.packing-single .packing-card>div {padding:0;}
+@media (max-width:1000px) {
+ .packing-heading {grid-template-columns:1fr 1fr;gap:24px;}
+ .packing-heading>.eyebrow {grid-column:1/-1;}
+ .packing-gallery-grid {gap:28px;}
+ .packing-card h3 {font-size:28px;}
+}
+@media (max-width:700px) {
+ .packing-gallery {padding:65px var(--pad);}
+ .packing-heading {display:block;margin-bottom:35px;}
+ .packing-heading h2 {font-size:48px;margin:20px 0 24px;}
+ .packing-gallery-grid {grid-template-columns:1fr;gap:45px;}
+ .packing-single .packing-card {display:block;}
+ .packing-single .packing-card>div {padding-top:24px;}
+ .packing-card figure img {aspect-ratio:4/3;}
+ .packing-card h3 {font-size:30px;}
 }

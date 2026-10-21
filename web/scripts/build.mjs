@@ -2,7 +2,7 @@ import { mkdir, cp, writeFile, readFile, rm } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { render } from '../src/render.mjs';
-import { routes } from '../src/config.mjs';
+import { routes, legacyRoutes } from '../src/config.mjs';
 
 export const root = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 export function normalizeBase(value = '/') {
@@ -29,12 +29,12 @@ export async function build(base = normalizeBase(process.env.BASE || '/')) {
       await writeFile(path.join(dir, 'index.html'), render(lang, page, base));
     }
   }
-  // Keep the former second-demo bookmarks working after assigning it to citrus.
-  for (const [lang, oldRoute] of [['es','es/a-la-mesa/'],['en','en/at-the-table/']]) {
-    const target = `${base}${routes[lang].citrus}`;
+  // Keep bookmarks working when categories or catalogue products change.
+  for (const [lang, oldRoute, targetPage] of legacyRoutes) {
+    const target = `${base}${routes[lang][targetPage]}`;
     const dir = path.join(dist,oldRoute);
     await mkdir(dir,{recursive:true});
-    await writeFile(path.join(dir,'index.html'), `<!doctype html><html lang="${lang}"><head><meta charset="UTF-8"><meta http-equiv="refresh" content="0;url=${target}"><title>SURFRUIT</title></head><body><a href="${target}">${lang==='es'?'Cítricos':'Citrus'}</a></body></html>`);
+    await writeFile(path.join(dir,'index.html'), `<!doctype html><html lang="${lang}"><head><meta charset="UTF-8"><meta http-equiv="refresh" content="0;url=${target}"><title>SURFRUIT</title></head><body><a href="${target}">${lang==='es'?'Ver catálogo':'View catalogue'}</a></body></html>`);
   }
   await writeFile(path.join(dist, 'index.html'), render('es', 'home', base));
   await writeFile(path.join(dist, '404.html'), render('es', '404', base));

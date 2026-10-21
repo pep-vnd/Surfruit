@@ -21,6 +21,13 @@ export const business = {
 };
 
 export const routes = {
-  es: { home:'es/', company:'es/surfruit/', product:'es/aguacate/', citrus:'es/citricos/', vegetables:'es/verduras/', others:'es/otros/', contact:'es/contacta/', grapefruit:'es/citricos/pomelo/', leek:'es/verduras/puerro/', carrot:'es/verduras/zanahoria/', cauliflower:'es/verduras/coliflor/', broccoli:'es/verduras/brocoli/', sweetPotato:'es/otros/boniato/', legal:'es/aviso-legal/', privacy:'es/privacidad/', cookies:'es/cookies/' },
-  en: { home:'en/', company:'en/surfruit/', product:'en/avocado/', citrus:'en/citrus/', vegetables:'en/vegetables/', others:'en/other-produce/', contact:'en/contact/', grapefruit:'en/citrus/grapefruit/', leek:'en/vegetables/leek/', carrot:'en/vegetables/carrot/', cauliflower:'en/vegetables/cauliflower/', broccoli:'en/vegetables/broccoli/', sweetPotato:'en/other-produce/sweet-potato/', legal:'en/legal-notice/', privacy:'en/privacy/', cookies:'en/cookies/' },
+  es: { home:'es/', company:'es/surfruit/', product:'es/aguacate/', citrus:'es/citricos/', vegetables:'es/verduras/', others:'es/otros/', contact:'es/contacta/', grapefruit:'es/citricos/pomelo/', leek:'es/verduras/puerro/', carrot:'es/verduras/zanahoria/', parsnip:'es/verduras/chirivia/', cabbage:'es/verduras/coles/', sweetPotato:'es/otros/boniato/', legal:'es/aviso-legal/', privacy:'es/privacidad/', cookies:'es/cookies/' },
+  en: { home:'en/', company:'en/surfruit/', product:'en/avocado/', citrus:'en/citrus/', vegetables:'en/vegetables/', others:'en/other-produce/', contact:'en/contact/', grapefruit:'en/citrus/grapefruit/', leek:'en/vegetables/leek/', carrot:'en/vegetables/carrot/', parsnip:'en/vegetables/parsnip/', cabbage:'en/vegetables/cabbage/', sweetPotato:'en/other-produce/sweet-potato/', legal:'en/legal-notice/', privacy:'en/privacy/', cookies:'en/cookies/' },
 };
+
+// Retired pages lead to the current category, rather than to a different product.
+export const legacyRoutes = [
+  ['es','es/a-la-mesa/','citrus'], ['en','en/at-the-table/','citrus'],
+  ['es','es/verduras/coliflor/','vegetables'], ['es','es/verduras/brocoli/','vegetables'],
+  ['en','en/vegetables/cauliflower/','vegetables'], ['en','en/vegetables/broccoli/','vegetables']
+];
