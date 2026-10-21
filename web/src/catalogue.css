@@ -51,6 +51,9 @@
 .citrus-welcome .warm-welcome-copy>h1 {font-size:clamp(64px,7.5vw,116px);}
 .citrus-welcome .welcome-photo>img {object-position:52% center;}
 .citrus-welcome em {color:#8d5835;}
+.citrus-stamp {position:absolute;bottom:85px;left:-34px;width:144px;height:144px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:6px solid #f6f0df;border-radius:50%;background:#efbdba;color:#792b40;transform:rotate(-9deg);text-align:center;}
+.citrus-stamp-variety {font-size:10px;font-weight:700;line-height:1;letter-spacing:.16em;text-transform:uppercase;}
+.citrus-stamp-note {font-family:Georgia,serif;font-size:30px;font-weight:400;line-height:.96;letter-spacing:-.04em;}
 .citrus-statement {padding:115px var(--pad);background:#eac5a3;text-align:center;}
 .citrus-statement>.eyebrow {justify-content:center;margin-bottom:35px;}
 .citrus-statement h2 {font-size:clamp(60px,8.2vw,126px);line-height:1.02;}
@@ -228,7 +231,9 @@
  .citrus-welcome {min-height:0;padding:130px var(--pad) 90px;gap:35px;}
  .citrus-welcome .warm-welcome-copy>h1 {font-size:clamp(60px,9vw,84px);}
  .citrus-welcome .welcome-photo>img {height:430px;}
- .citrus-welcome .warm-stamp {width:100px;height:100px;left:-22px;bottom:65px;font-size:12px;}
+ .citrus-stamp {width:116px;height:116px;left:-22px;bottom:65px;border-width:5px;gap:8px;}
+ .citrus-stamp-variety {font-size:8px;}
+ .citrus-stamp-note {font-size:25px;}
  .citrus-welcome .welcome-photo figcaption {font-size:17px;}
  .citrus-welcome .welcome-intro {font-size:15px;}
  .citrus-welcome .welcome-foot {font-size:8px;}
