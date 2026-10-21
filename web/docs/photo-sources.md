@@ -67,3 +67,7 @@ Las fotos de cajas, mallas y manojos son referencias visuales; no se deducen de 
 ## Portada de cítricos sin logo superpuesto
 
 `citrus-hero-clean-700.webp` y `citrus-hero-clean-1400.webp` proceden de `15.05.08 Producto Las Lomas/Producto_Lomas-9975.jpg` (2304 × 1536), la misma toma original sin logo. Sustituyen en la portada a la copia marcada de la carpeta Grapefruit. Solo se redimensiona y convierte a WebP; no se reconstruye ni retoca el contenido. El nombre nuevo evita reutilizar la imagen anterior en caché.
+
+## Icono de pestaña transparente
+
+`surfruit-favicon-transparent.png` (256 px) y `.ico` (16, 32 y 48 px) utilizan el emblema del sol y las hojas de `logo/Surfruit png.png`, conservando su canal alfa original. Se extrae el símbolo sobre el texto y se centra en un lienzo transparente; no se modifica el logotipo utilizado dentro de la web. Verificado sobre fondos claro y oscuro. Nombre nuevo para evitar la caché del favicon negro anterior.
