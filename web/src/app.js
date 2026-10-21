@@ -204,7 +204,7 @@ document.querySelector('[data-copy-link]')?.addEventListener('click', async () =
 
 // One-shot entrance motion extends the approved scroll story to editorial pages.
 // Content is visible by default and remains visible with reduced motion or no JS.
-const reveals = [...document.querySelectorAll('[data-reveal], .section-heading, .selection-heading, .recipe-heading, .home-origin>div')];
+const reveals = [...document.querySelectorAll('[data-reveal], .section-heading, .selection-heading, .recipe-heading')];
 reveals.forEach(el => el.setAttribute('data-reveal',''));
 if ('IntersectionObserver' in window && !reducedMedia.matches) {
   const observer = new IntersectionObserver(entries => {

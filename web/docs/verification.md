@@ -1,5 +1,13 @@
 # Verificación · catálogo completo
 
+## Segunda revisión del titular y cabecera de Surfruit
+
+- El usuario seguía percibiendo temblor en la M después del ajuste anterior. El bloque de origen queda ahora totalmente fuera del observador de apariciones: sin `data-reveal`, opacidad 1, transformación `none` y duración de transición 0 s.
+- Solo este titular cambia de Nimbus Sans Narrow a Adwaita Sans (la otra familia local ya utilizada), con peso 750 y sin espaciado negativo. El resto de los titulares y las animaciones se conservan.
+- Cabecera de Surfruit reorganizada en dos columnas: presentación a la izquierda y fotografía de hasta 560 × 420 px a la derecha. En móvil se apilan y la imagen usa proporción 3:2. Ajustado `sizes` al espacio real de la foto.
+- Revisión visual local en escritorio de 1440 × 900 y móviles de 390 × 844 / 320 × 740, español e inglés. Desplazamiento arriba y abajo en el titular, sin efectos activos en el bloque. Sin desbordamiento ni avisos de consola en las vistas comprobadas.
+
+
 ## Revisión de inicio, fotografías y catálogo · 21 de octubre de 2026
 
 - Inicio: el botón principal enlaza al catálogo y se conservan las cuatro fotos aprobadas. Eliminada la introducción duplicada de aguacate. Verificado el titular de origen antes y después de bajar y volver: opacidad final 1, transformación `none`, sin distorsión observada.
