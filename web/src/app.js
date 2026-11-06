@@ -32,7 +32,9 @@ function renderScene() {
   if (story && !ready && !reduced && !failed && story.getBoundingClientRect().top < innerHeight + 200) prepareScene();
   if (!story || !ready || reduced) return;
   const rect = story.getBoundingClientRect();
-  if (rect.bottom < 0 || rect.top > innerHeight) return;
+  const visible = !document.hidden && rect.bottom >= 0 && rect.top <= innerHeight;
+  avocadoRenderer?.setActive?.(visible);
+  if (!visible) return;
   const stage = story.querySelector('.product-stage');
   const travel = Math.max(1, story.offsetHeight - stage.offsetHeight);
   const p = clamp(-rect.top / travel);
@@ -60,6 +62,7 @@ function renderScene() {
 function scheduleFrame() { if (!frame) frame = requestAnimationFrame(renderScene); }
 window.addEventListener('scroll', scheduleFrame, { passive: true });
 window.addEventListener('resize', scheduleFrame, { passive: true });
+document.addEventListener('visibilitychange', scheduleFrame);
 applyMotionPreference();
 if (location.hash) requestAnimationFrame(() => document.getElementById(location.hash.slice(1))?.scrollIntoView({ behavior: 'instant' }));
 

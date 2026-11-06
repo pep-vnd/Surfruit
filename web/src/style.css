@@ -1,12 +1,12 @@
 @font-face {
   font-family:Surfruit Display;
-  src:url('./display.woff2') format('woff2');
+  src:url('./display-latin.woff2') format('woff2');
   font-weight:700;
   font-display:swap;
 }
 @font-face {
   font-family:Surfruit Sans;
-  src:url('./sans.woff2') format('woff2');
+  src:url('./sans-latin.woff2') format('woff2');
   font-weight:100 900;
   font-display:swap;
 }

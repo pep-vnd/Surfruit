@@ -49,7 +49,7 @@ for (const [lang, pages] of Object.entries(routes)) {
     if (page === 'home') {
       assert(!html.includes('class="home-product"'), `${route}: no duplicate avocado introduction`);
       assert.equal((html.match(/class="category-card"/g)||[]).length,3,`${route}: current category photos preserved`);
-      assert(!html.includes(`href="${base}${pages.others}"`), `${route}: retired other produce category absent`);
+      assert(!/href="[^"]*\/(?:otros|other-produce)\//.test(html), `${route}: retired other produce category absent`);
     }
     const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]);
     assert.equal(new Set(ids).size,ids.length,`${route}: unique IDs`);

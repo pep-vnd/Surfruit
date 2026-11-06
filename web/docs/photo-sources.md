@@ -71,3 +71,9 @@ Las fotos de cajas, mallas y manojos son referencias visuales; no se deducen de 
 ## Icono de pestaña transparente
 
 `surfruit-favicon-transparent.png` (256 px) y `.ico` (16, 32 y 48 px) utilizan el emblema del sol y las hojas de `logo/Surfruit png.png`, conservando su canal alfa original. Se extrae el símbolo sobre el texto y se centra en un lienzo transparente; no se modifica el logotipo utilizado dentro de la web. Verificado sobre fondos claro y oscuro. Nombre nuevo para evitar la caché del favicon negro anterior.
+
+## Prueba del 6 de noviembre de 2026
+
+La portada de Verduras utiliza `leek-team-429.webp`, derivado sin aumento de resolución de la imagen adjuntada por el cliente (`codex-clipboard-3f4ee2ac-f592-4e2a-be69-dabc7fcff0b8.png`, 429 × 439). Es una referencia provisional: no se localizó esa toma en el archivo disponible. Sustituir por el original cuando el cliente indique su ubicación para mejorar la nitidez en escritorio.
+
+Las fotos servidas por la web están ahora en `assets/photos/`. `scripts/optimize-photos.py` genera WebP a 480, 700, 1000, 1400 y hasta 1800 píxeles, sin ampliar fuentes pequeñas, y registra sus dimensiones reales en `src/photo-manifest.mjs`. Utiliza los originales de esta tabla cuando están disponibles; para recetas y otros derivados conserva los maestros existentes. La compilación habitual usa los derivados ya guardados y no requiere Python ni el archivo privado de fotos.

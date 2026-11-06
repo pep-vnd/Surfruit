@@ -14,7 +14,12 @@ export async function build(base = normalizeBase(process.env.BASE || '/')) {
   // Only disposable build output is removed. Originals are never traversed.
   await rm(dist, { recursive: true, force: true });
   await mkdir(dist, { recursive: true });
-  await cp(path.join(root, 'assets'), path.join(dist, 'assets'), { recursive: true, filter: source => !/\.(ttf|otf)$|avocado-(skin|stone|pulp)-(texture|natural)\.webp$/.test(source) });
+  await cp(path.join(root, 'assets'), path.join(dist, 'assets'), { recursive: true, filter: source => {
+    if (/\.(ttf|otf)$|avocado-(skin|stone|pulp)-(texture|natural)\.webp$/.test(source)) return false;
+    // Retain masters in the repository; deliver only the responsive derivatives.
+    if (path.dirname(source) === path.join(root, 'assets') && /-\d+\.webp$|^(?:sans|display)\.woff2$/.test(path.basename(source))) return false;
+    return true;
+  } });
   await cp(path.join(root, 'src/style.css'), path.join(dist, 'assets/style.css'));
   await cp(path.join(root, 'src/app.js'), path.join(dist, 'assets/app.js'));
   for (const name of ['avocado-video.js', 'warm.css', 'video.css', 'catalogue.css']) await cp(path.join(root, 'src', name), path.join(dist, 'assets', name));
